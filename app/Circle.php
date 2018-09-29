@@ -14,7 +14,12 @@ class Circle
 
   public function getArea()
   {
-    return $this->radius * 3.1415;
+    return ($this->radius ^ 2) * pi();
+  }
+
+  public function getPerimeter()
+  {
+    return $this->radius * pi();
   }
 
 }
