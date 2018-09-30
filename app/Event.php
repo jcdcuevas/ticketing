@@ -14,4 +14,9 @@ class Event extends Model
       'venue',
       'description'
     ];
+
+    public function tickets()
+    {
+      return $this->hasMany('App\Ticket');
+    }
 }

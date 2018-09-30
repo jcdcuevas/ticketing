@@ -20,3 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/events', [
   'uses' => 'Api\EventsController@index'
 ]);
+
+
+Route::get('/events/{id}/tickets', [
+  'uses' => 'Api\EventTicketsController@index'
+]);
