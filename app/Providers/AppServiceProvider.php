@@ -5,6 +5,10 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
+use App\Strategies\ConektaChargeStrategy;
+use App\Strategies\OpenPayChargeStrategy;
+use App\Strategies\ChargeStrategyInterface;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -26,5 +30,9 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $this->app->bind(
+            ChargeStrategyInterface::class,
+            OpenPayChargeStrategy::class
+        );
     }
 }

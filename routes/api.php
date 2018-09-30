@@ -21,7 +21,10 @@ Route::get('/events', [
   'uses' => 'Api\EventsController@index'
 ]);
 
-
 Route::get('/events/{id}/tickets', [
   'uses' => 'Api\EventTicketsController@index'
+]);
+
+Route::post('/orders', [
+  'uses' => 'Api\OrdersController@store'
 ]);
