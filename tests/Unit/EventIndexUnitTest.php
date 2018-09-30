@@ -32,8 +32,8 @@ class EventIndexUnitTest extends TestCase
         $mockEventModel->shouldReceive('orderBy')->andReturn($mockEventModel);
         $mockEventModel->shouldReceive('get')->andReturn(collect([$event]));
 
-        $eventsController = new \App\Http\Controllers\Api\EventsController($mockRequest, $mockEventModel);
-        $response = $eventsController->index();
+        $eventsController = new \App\Http\Controllers\Api\EventsController;
+        $response = $eventsController->index($mockRequest, $mockEventModel);
         $this->assertTrue(is_a($response, 'Illuminate\Http\JsonResponse'));
 
         $json = json_decode($response->content());

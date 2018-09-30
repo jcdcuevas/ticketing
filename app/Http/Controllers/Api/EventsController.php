@@ -7,20 +7,13 @@ use App\Http\Controllers\Controller;
 
 class EventsController extends Controller
 {
-    var $request;
-    var $eventModel;
-
-    public function __construct(Request $request, \App\Event $eventModel){
-      $this->request = $request;
-      $this->eventModel = $eventModel;
-    }
-
-    public function index()
+    
+    public function index(Request $request, \App\Event $eventModel)
     {
-      $events = $this->eventModel->orderBy('id', 'ASC');
+      $events = $eventModel->orderBy('id', 'ASC');
 
-      if($this->request->has('from_date')){
-        $events = $events->whereDate('starts_at', '>=', $this->request->get('from_date'));
+      if($request->has('from_date')){
+        $events = $events->whereDate('starts_at', '>=', $request->get('from_date'));
       }
 
       $events = $events->get();
