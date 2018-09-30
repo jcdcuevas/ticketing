@@ -20,10 +20,8 @@ class EventTicketsController extends Controller
       // la conversión
       $tickets = $event->tickets;
       if($request->has('currency')){
-
+        $currency = \App\Factories\CurrencyFactory::find($request->currency);
         foreach($tickets as $ticket):
-          $currency = \App\Currency::where('code', $request->currency)
-            ->first();
           $ticket->price = bcdiv($ticket->price, $currency->exchange_rate, 2);
         endforeach;
       }
